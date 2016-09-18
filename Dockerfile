@@ -40,15 +40,15 @@ ENV HOME /home/node
 USER node
 
 # Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /home/node/app
+WORKDIR /home/node/app
 
 # Install app dependencies
-COPY package.json /usr/src/app/
+COPY package.json /home/node/app/
 RUN npm install
 
 # Bundle app source
-COPY . /usr/src/app
+COPY . /home/node/app
 
 EXPOSE 80
-CMD [ "npm", "start" ]
+CMD DEBUG=nightmare* xvfb-run --server-args="-screen 0 1024x768x24" npm start -s hn -m create -p 11878025
