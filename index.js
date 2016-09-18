@@ -38,9 +38,10 @@ dispatcher.onGet("/render", function (req, res) {
         var useragent = mobile ? "Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5" : "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36";
         var additionalWait = query.additionalwait !== undefined ? parseInt(query.additionalwait) : 100;
 
-        console.log("width :", width, typeof width);
-        console.log("height :", height);
-        console.log("additionalWait :", additionalWait);
+        if (width > 1920) {
+            sendError(res, "Width should be smaller than 1920px!");
+            return;
+        }
 
         var nightmare = Nightmare({ show: false, waitTimeout: 15000, width: width, height: height, x: 10, y: 10 });
 
