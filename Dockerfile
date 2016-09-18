@@ -21,6 +21,6 @@ RUN npm install
 # Bundle app source
 COPY . /home/node/app
 
-EXPOSE 80
+EXPOSE 8080
 # CMD DEBUG=nightmare:*,electron:* xvfb-run --server-args="-screen 0 1024x768x24" npm start -s hn -m create -p 11878025
 CMD xvfb-run --server-args="-screen 0 1024x768x24" npm start -s hn -m create -p 11878025

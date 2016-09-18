@@ -4,7 +4,7 @@ var dispatcher = require('httpdispatcher');
 var url = require('url');
 var Nightmare = require('nightmare');
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8080;
 
 function handleRequest(request, response) {
     try {
