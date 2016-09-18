@@ -1,0 +1,17 @@
+{
+  "name": "smallstack-webpage-renderer",
+  "version": "0.1.0",
+  "description": "Tiny server that renders a given url",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js",
+    "watch": "nodemon -e js -x npm run serve"
+  },
+  "author": "smallstack.io",
+  "license": "MIT",
+  "dependencies": {
+    "httpdispatcher": "^1.0.0",
+    "nightmare": "^2.7.0",
+    "nodemon": "^1.10.2"
+  }
+}
