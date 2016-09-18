@@ -12,4 +12,4 @@ RUN npm install
 COPY . /usr/src/app
 
 EXPOSE 80
-CMD [ "npm", "serve" ]
+CMD [ "npm", "start" ]
