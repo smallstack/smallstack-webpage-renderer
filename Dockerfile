@@ -23,4 +23,4 @@ COPY . /home/node/app
 
 EXPOSE 8080
 # CMD DEBUG=nightmare:*,electron:* xvfb-run --server-args="-screen 0 1024x768x24" npm start -s hn -m create -p 11878025
-CMD xvfb-run --server-args="-screen 0 1024x768x24" npm start -s hn -m create -p 11878025
+CMD xvfb-run --server-args="-screen 0 3840x2160x24" npm start -s hn -m create -p 11878025
