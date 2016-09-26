@@ -37,6 +37,7 @@ dispatcher.onGet("/render", function (req, res) {
         var height = query.height !== undefined ? parseInt(query.height) : (mobile ? 667 : 800);
         var useragent = mobile ? "Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5" : "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36";
         var additionalWait = query.additionalwait !== undefined ? parseInt(query.additionalwait) : 100;
+        var waitForPrerenderReady = query.waitforprerender === "false" ? false : true;
 
         if (width > 3840) {
             sendError(res, "Width should be smaller than 3840px!");
@@ -50,8 +51,11 @@ dispatcher.onGet("/render", function (req, res) {
             .useragent(useragent)
             .goto(renderUrl)
             .wait("body")
-            .wait(function () {
-                return window["prerenderReady"] === true;
+            .wait(function (waitForPrerenderReady) {
+                if (waitForPrerenderReady)
+                    return window["prerenderReady"] === true;
+                else
+                    return true;
             })
             .wait(additionalWait)
             .screenshot()
